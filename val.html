@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prompt with Two Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+			background: white;
+			padding: 50px 40px; /* more padding for vertical space */
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.1);
+			text-align: center;
+			height: 380px; /* slightly taller */
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between; /* spreads content vertically */
+		}
+		
+		h2 {
+			margin-bottom: 40px; /* pushes buttons down */
+		}
+
+
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no-btn {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        #forcedText {
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Hi Devin, You wanna be my Valentine?</h2>
+
+    <button class="yes-btn" id="yesBtn" onclick="window.location.href='yay.html'">Yes</button>
+    <button class="no-btn" id="noBtn" onclick="makeYesBigger()">No</button>
+
+    <div id="forcedText">aw man, you gotta say yes now</div>
+</div>
+
+<script>
+    let growCount = 0;
+
+    function makeYesBigger() {
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const forcedText = document.getElementById("forcedText");
+
+        growCount++;
+
+        // Make the Yes button grow each time
+        yesBtn.style.transform = `scale(${1 + growCount * 0.5})`;
+
+        // After 5 clicks, hide No button and show text
+        if (growCount >= 5) {
+            noBtn.style.display = "none";
+            forcedText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
